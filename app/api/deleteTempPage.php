@@ -1,5 +1,5 @@
 <?php
-$file = "../../olegzal.html";
+$file = "../../yfuy1g221ub_hhg44.html";
 
 if (file_exists($file)) {
     unlink($file);
