@@ -75,7 +75,7 @@ export default class Editor extends Component {
         await axios
             .post("./api/savePage.php", {pageName: this.currentPage, html})
             .then(() => this.showNotifications('Успешно сохранено', 'success'))
-            .catch(() => this.showNotifications('Ошибка сохранения', 'danger'))
+            .catch((error) => this.showNotifications(error.message || 'Ошибка сохранения', 'danger'))
             .finally(this.isLoaded);
 
         this.loadBackupsList();

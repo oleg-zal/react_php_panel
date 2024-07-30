@@ -19,7 +19,10 @@ if ($newHTML && $file) {
     copy("../../" . $file, "../backups/" . $backupFN );
     array_push($backups, ["page" => $file, "file" => $backupFN, "time" => date("H:i:s d:m:y")]);
     file_put_contents("../backups/backups.json", json_encode( $backups ));
-    file_put_contents("../../" . $file, $newHTML);
+    $handle = file_put_contents("../../" . $file, $newHTML);
+    if ($handle === false) {
+        header("HTTP/1.0 401 Permission Denied to Update $file");
+    }
 } else {
     header("HTTP/1.0 400 Bad Request");
 }
